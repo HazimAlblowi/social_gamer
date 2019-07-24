@@ -4,6 +4,7 @@
       <th>by</th>
       <th>Game</th>
       <th>Platform</th>
+      <th>Comments</th>
       <th colspan="3">Time</th>
     </tr>
   </thead>
@@ -11,9 +12,10 @@
   <tbody>
     <% @invitaions.each do |invitaion| %>
       <tr>
-        <td><%= User.find(invitaion.user_id).email %></td>
+        <td><%= User.find(invitaion.user_id).username %></td>
         <td><%= invitaion.game %></td>
         <td><%= invitaion.platform %></td>
+        <td><%= invitaion.comments.count %></td>
         <td><%= invitaion.time %></td>
         <td><%= link_to 'Show', invitaion %></td>
       </tr>
