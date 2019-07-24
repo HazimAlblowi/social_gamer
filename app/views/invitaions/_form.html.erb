@@ -13,18 +13,19 @@
 <div class="col-sm-12 col-lg-4">
 
   <div class="field form-group">
-    <%= form.label :game %>
+    <%= form.label :game  %>
     <%= form.text_field :game, class:"form-control", required: true %>
   </div>
 
   <div class="field form-group">
     <%= form.label :platform %>
-    <%= form.text_field :platform, class:"form-control"  %>
+  <%= form.select :platform, ['PC', 'PS4', 'Switch', 'Xbox One']%>
   </div>
 
-    <div class="field form-group">
-    <%= form.label :time %>
-    <%= form.text_field :time, class:"form-control"  %>
+  
+  <div class="field form-group">
+    <%= form.label :mode %>
+  <%= form.select :mode, ['Casual', 'Competitive', 'Professional']%>
   </div>
 
     <div class="field form-group">

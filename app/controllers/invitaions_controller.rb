@@ -1,11 +1,19 @@
 class InvitaionsController < ApplicationController
-    before_action :set_invitaion, only: [:show, :edit, :update, :destroy]
+    before_action :set_invitaion, only: [:show, :edit, :update, :destroy, :accept]
     before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
     before_action :check_if_owner, only: [:edit, :update, :destroy]
 
 
     def index
         @invitaions = Invitaion.all.order(created_at: :desc)
+    end
+
+    def accept
+        @invitaion.accepted = true;
+        @invitaion.accepter = current_user.id
+        @invitaion.save
+
+        redirect_to @invitaion
     end
 
     def show
@@ -56,6 +64,6 @@ class InvitaionsController < ApplicationController
     end
     
     def invitaion_params
-        params.require(:invitaion).permit(:game, :platform, :time, :user_id)
+        params.require(:invitaion).permit(:game, :platform, :time, :user_id, :mode)
     end
 end

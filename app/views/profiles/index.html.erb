@@ -43,7 +43,7 @@
               <hr>
               <% if user_signed_in?%>
                 <% if current_user.id == @user.id%>
-              <button type="button" class="btn btn-secondary">Edit</button>
+                <%= link_to 'Edit', edit_user_registration_path,class:"btn btn-secondary" %>
               <% end %>
               <% end %>
             </div>

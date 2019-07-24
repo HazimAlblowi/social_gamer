@@ -14,13 +14,16 @@
 </p>
 
 <p>
-  <strong>Time:</strong>
-  <%= @invitaion.time %>
+  <strong>Mode</strong>
+  <%= @invitaion.mode %>
 </p>
 <% if user_signed_in? %>
     <% if current_user.id == @invitaion.user_id %>
         <%= link_to 'Edit', edit_invitaion_path(@invitaion) %> |
-        <td><%= link_to 'Delete', @invitaion, method: :delete, data: { confirm: 'Are you sure?' }%></td>
+        <%= link_to 'Delete', @invitaion, method: :delete, data: { confirm: 'Are you sure?' }%>
+        <%elsif !@invitaion.accepted%>
+        <%= link_to "Accept", accept_invitaion_path,  class:"btn btn-success"%>
+
     <% end %>
 <%end%>
 

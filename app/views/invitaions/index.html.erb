@@ -4,8 +4,8 @@
       <th>by</th>
       <th>Game</th>
       <th>Platform</th>
-      <th>Comments</th>
-      <th colspan="3">Time</th>
+      <th>Mode</th>
+      <th colspan="2">Comments</th>
     </tr>
   </thead>
 
@@ -15,8 +15,8 @@
         <td><%= User.find(invitaion.user_id).username %></td>
         <td><%= invitaion.game %></td>
         <td><%= invitaion.platform %></td>
+        <td><%= invitaion.mode %></td>
         <td><%= invitaion.comments.count %></td>
-        <td><%= invitaion.time %></td>
         <td><%= link_to 'Show', invitaion %></td>
       </tr>
     <% end %>
