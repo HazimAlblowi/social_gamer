@@ -1,6 +1,6 @@
 
-<br>
-<div class="container">
+
+
   <div class="row">
     <div class="col-md-9">
       <div class="panel panel-default">
@@ -10,28 +10,29 @@
           </div>
           <div class="row">
 			<div class="col-md-4 text-center">
-              <img class="img-circle avatar avatar-original" style="-webkit-user-select:none; 
-              display:block; margin:auto;" src="http://robohash.org/sitsequiquia.png?size=120x120">
+                <%= image_tag(current_user.profile_img,width:"200px", height:"200px", style:"-webkit-user-select:none; 
+              display:block; margin:auto;", class:"img-circle avatar avatar-original") %>
+
             </div>
             <div class="col-md-8">
               <div class="row">
                 <div class="col-md-12">
-                  <h1 class="only-bottom-margin">User Name</h1>
+                  <h1 class="only-bottom-margin"><%=@user.username%></h1>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
-                  <span class="text-muted">Email:</span> email@test.com<br>
-                  <span class="text-muted">Birth date:</span> 01.01.2001<br>
-                  <span class="text-muted">Gender:</span> male<br><br>
-                  <small class="text-muted">Created: 01.01.2015</small>
+                  <span class="text-muted">Email: </span><%=@user.email%><br>
+                  <span class="text-muted">First Name: </span><%=@user.first_name%><br>
+                  <span class="text-muted">Last Name: </span> <%=@user.last_name%><br><br>
+
                 </div>
                 <div class="col-md-6">
                   <div class="activity-mini">
-                    <i class="glyphicon glyphicon-comment text-muted"></i> 500
+                    <i class="glyphicon glyphicon-comment text-muted">invitaions: </i>  <%=@user.invitaions.count%>
                   </div>
                   <div class="activity-mini">
-                    <i class="glyphicon glyphicon-thumbs-up text-muted"></i> 1500
+                    <i class="glyphicon glyphicon-thumbs-up text-muted">comments: </i> <%=@user.comments.count%>
                   </div>
                 </div>
               </div>
@@ -39,7 +40,12 @@
           </div>
           <div class="row">
             <div class="col-md-12">
-              <hr><button class="btn btn-default pull-right"><i class="glyphicon glyphicon-pencil"></i> Edit</button>
+              <hr>
+              <% if user_signed_in?%>
+                <% if current_user.id == @user.id%>
+              <button type="button" class="btn btn-secondary">Edit</button>
+              <% end %>
+              <% end %>
             </div>
           </div>
         </div>
