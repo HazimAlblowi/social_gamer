@@ -1,0 +1,10 @@
+<%= form_with(model: [ @invitaion, @invitaion.comments.build ], local: true) do |form| %>
+
+  <p>
+    <%= form.label 'content' %><br>
+    <%= form.text_area :content %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

@@ -6,9 +6,13 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarCollapse">
-    <ul class="navbar-nav mr-auto ml-auto">
+    <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <%= link_to 'Invitaions', invitaions_path, class:"nav-link nav-bar-tl" %>
+        <%= link_to '| Invitaions', invitaions_path, class:"nav-link nav-bar-tl" %>
+      </li>
+
+        <li class="nav-item active">
+        <%= link_to '| New invitaion', new_invitaion_path, class:"nav-link nav-bar-tl" %>
       </li>
     </ul>
 
@@ -22,7 +26,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Profile</a>
-          <a class="dropdown-item" href="#">Invitaions</a>
+          <a class="dropdown-item" href="#">My Invitaions</a>
           <a class="dropdown-item" href="#">Friends List</a>
 
           <div class="dropdown-divider"></div>

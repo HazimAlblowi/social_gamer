@@ -1,0 +1,38 @@
+<%= form_for @invitaion do |form| %>
+  <% if @invitaion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@invitaion.errors.count, "error") %> prohibited this invitaion from being saved:</h2>
+
+      <ul>
+      <% @invitaion.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="col-sm-12 col-lg-4">
+
+  <div class="field form-group">
+    <%= form.label :game %>
+    <%= form.text_field :game, class:"form-control", required: true %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :platform %>
+    <%= form.text_field :platform, class:"form-control"  %>
+  </div>
+
+    <div class="field form-group">
+    <%= form.label :time %>
+    <%= form.text_field :time, class:"form-control"  %>
+  </div>
+
+    <div class="field form-group">
+    <%= form.hidden_field :user_id, :value => current_user.id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+</div>
+<% end %>

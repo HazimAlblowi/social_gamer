@@ -1,2 +1,22 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<table class="table table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th>by</th>
+      <th>Game</th>
+      <th>Platform</th>
+      <th colspan="3">Time</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @invitaions.each do |invitaion| %>
+      <tr>
+        <td><%= User.find(invitaion.user_id).email %></td>
+        <td><%= invitaion.game %></td>
+        <td><%= invitaion.platform %></td>
+        <td><%= invitaion.time %></td>
+        <td><%= link_to 'Show', invitaion %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

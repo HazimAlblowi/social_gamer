@@ -1,0 +1,62 @@
+<h1>Invitaion:</h1>
+
+<p>
+  <strong>by:</strong>
+  <%= User.find(@invitaion.user_id).email %>
+</p>
+<p>
+  <strong>Game:</strong>
+  <%= @invitaion.game %>
+</p>
+<p>
+  <strong>Platform:</strong>
+  <%= @invitaion.platform %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @invitaion.time %>
+</p>
+<% if user_signed_in? %>
+    <% if current_user.id == @invitaion.user_id %>
+        <%= link_to 'Edit', edit_invitaion_path(@invitaion) %> |
+        <td><%= link_to 'Delete', @invitaion, method: :delete, data: { confirm: 'Are you sure?' }%></td>
+    <% end %>
+<%end%>
+
+<hr>
+<% if user_signed_in? %>
+        <button type="button" class="btn btn-primary" id="show-new-comment">Add new comment</button>
+    <div id="new-comment"> 
+    <h3>New Comment:</h3>
+        <%= render 'comments/new'%>
+    </div>
+    <hr>
+<%end%>
+
+<h2>Comments:</h2>
+  <hr>
+
+<% @invitaion.comments.order(created_at: :desc).each do |comment| %>
+        
+  <p>
+    <strong>Commenter:</strong>
+    <%=  User.find(comment.user_id).email%>
+  </p>
+ 
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.content %>
+  </p>
+  <% if user_signed_in?%>
+    <% if current_user.id == comment.user_id%>
+        <%= link_to 'Delete Comment', [comment.invitaion, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
+         | 
+         <%= link_to 'Edit comment', edit_comment_path(comment) %>
+
+
+
+    <% end %>
+  <%end%>
+  <hr>
+<% end %>
