@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get '/users/:username', to: "profiles#index" , as: 'user_profile'
   get '/invitaions/:id/accept', to: "invitaions#accept", as: 'accept_invitaion'
   get '/users/:id/invitaions', to: "invitaions#user_invitaions", as: 'user_invitaions'
+  get '/users/:id/accepted_invitaions', to: "invitaions#user_accepted_invitaions", as: 'user_accepted_invitaions'
+
   root 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :comments

@@ -8,6 +8,13 @@ class InvitaionsController < ApplicationController
         @invitaions = Invitaion.all.order(created_at: :desc)
     end
 
+    def user_invitaions
+        @user_invitaions = User.find(params[:id]).invitaions
+    end
+
+    def user_accepted_invitaions
+        @user_accepted_invitaions = Invitaion.where(accepter: params[:id])
+    end
     def accept
         @invitaion.accepted = true;
         @invitaion.accepter = current_user.id

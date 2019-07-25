@@ -1,0 +1,24 @@
+<table class="table table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th>by</th>
+      <th>Game</th>
+      <th>Platform</th>
+      <th>Mode</th>
+      <th colspan="2">Comments</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_accepted_invitaions.each do |invitaion| %>
+      <tr>
+        <td><%= User.find(invitaion.user_id).username %></td>
+        <td><%= invitaion.game %></td>
+        <td><%= invitaion.platform %></td>
+        <td><%= invitaion.mode %></td>
+        <td><%= invitaion.comments.count %></td>
+        <td><%= link_to 'Show', invitaion %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

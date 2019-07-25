@@ -18,13 +18,20 @@
   <%= @invitaion.mode %>
 </p>
 <% if user_signed_in? %>
+  <%if @invitaion.accepted%>
+    <h5>Accepted by:</h5><%= link_to User.find(@invitaion.accepter).username,  user_profile_path(User.find(@invitaion.accepter).username), class:"btn btn-outline-primary"%>
+    <h1></h1>
+  <%end%>
     <% if current_user.id == @invitaion.user_id %>
-        <%= link_to 'Edit', edit_invitaion_path(@invitaion) %> |
-        <%= link_to 'Delete', @invitaion, method: :delete, data: { confirm: 'Are you sure?' }%>
+<hr>
+          <% if !@invitaion.accepted%>
+        <%= link_to 'Edit', edit_invitaion_path(@invitaion), class:"btn btn-outline-secondary" %> 
+          <% end %>
+        <%= link_to 'Delete', @invitaion, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger"%>
         <%elsif !@invitaion.accepted%>
         <%= link_to "Accept", accept_invitaion_path,  class:"btn btn-success"%>
-
-    <% end %>
+   
+ <% end %>
 <%end%>
 
 <hr>
@@ -44,7 +51,7 @@
         
   <p>
     <strong>Commenter:</strong>
-    <%=  User.find(comment.user_id).email%>
+    <%=  User.find(comment.user_id).username%>
   </p>
  
   <p>
@@ -54,9 +61,7 @@
   <% if user_signed_in?%>
     <% if current_user.id == comment.user_id%>
         <%= link_to 'Delete Comment', [comment.invitaion, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
-         | 
-         <%= link_to 'Edit comment', edit_comment_path(comment) %>
-
+             <%= link_to 'Edit comment', edit_comment_path(comment) %>
 
 
     <% end %>
